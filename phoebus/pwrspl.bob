@@ -19,143 +19,92 @@
     </foreground_color>
     <transparent use_class="true">true</transparent>
   </widget>
-  <widget type="scaledslider" version="2.0.0">
-    <name>Slider_PS1</name>
-    <pv_name>pwspl:ps1-sp</pv_name>
-    <x>100</x>
-    <y>110</y>
-    <width>55</width>
-    <height>400</height>
-    <horizontal>false</horizontal>
-    <show_hihi>false</show_hihi>
-    <show_high>false</show_high>
-    <show_low>false</show_low>
-    <show_lolo>false</show_lolo>
-    <increment>0.1</increment>
-  </widget>
-  <widget type="scaledslider" version="2.0.0">
-    <name>Slider_PS2</name>
-    <pv_name>pwspl:ps2-sp</pv_name>
-    <x>190</x>
-    <y>110</y>
-    <width>55</width>
-    <height>400</height>
-    <horizontal>false</horizontal>
-    <show_hihi>false</show_hihi>
-    <show_high>false</show_high>
-    <show_low>false</show_low>
-    <show_lolo>false</show_lolo>
-    <increment>0.1</increment>
-  </widget>
-  <widget type="multi_state_led" version="2.0.0">
-    <name>LED_avrg</name>
-    <x>570</x>
-    <y>240</y>
-    <states>
-      <state>
-        <value>0</value>
-        <label>State 1</label>
-        <color>
-          <color name="Off" red="60" green="100" blue="60">
-          </color>
-        </color>
-      </state>
-      <state>
-        <value>1</value>
-        <label>State 2</label>
-        <color>
-          <color name="On" red="0" green="255" blue="0">
-          </color>
-        </color>
-      </state>
-    </states>
-  </widget>
-  <widget type="multi_state_led" version="2.0.0">
-    <name>LED_ublnc</name>
-    <x>570</x>
-    <y>450</y>
-    <states>
-      <state>
-        <value>0</value>
-        <label>State 1</label>
-        <color>
-          <color name="Off" red="60" green="100" blue="60">
-          </color>
-        </color>
-      </state>
-      <state>
-        <value>1</value>
-        <label>State 2</label>
-        <color>
-          <color name="On" red="0" green="255" blue="0">
-          </color>
-        </color>
-      </state>
-    </states>
-  </widget>
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle</name>
-    <x>290</x>
-    <y>90</y>
+    <x>180</x>
+    <y>80</y>
     <width>10</width>
     <height>420</height>
   </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text_avrg</name>
-    <pv_name>pwspl:ps-avg</pv_name>
-    <x>440</x>
-    <y>240</y>
-  </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text_ublnc</name>
-    <pv_name>pwspl:ps-unb</pv_name>
-    <x>440</x>
-    <y>450</y>
-  </widget>
   <widget type="meter" version="3.0.0">
     <name>Meter_avrg</name>
-    <pv_name>pwspl:ps-avg</pv_name>
-    <x>370</x>
+    <pv_name>pwspl:ps1-sp</pv_name>
+    <x>232</x>
     <y>110</y>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <limits_from_pv>false</limits_from_pv>
+    <maximum>10.0</maximum>
   </widget>
   <widget type="meter" version="3.0.0">
     <name>Meter_1</name>
-    <pv_name>pwspl:ps-unb</pv_name>
-    <x>370</x>
+    <pv_name>pwspl:ps2-sp</pv_name>
+    <x>232</x>
     <y>310</y>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <limits_from_pv>false</limits_from_pv>
+    <maximum>10.0</maximum>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_avrg</name>
-    <text>Average current</text>
-    <x>440</x>
-    <y>70</y>
+    <text>PS1</text>
+    <x>342</x>
+    <y>80</y>
+    <width>40</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_ublnc</name>
-    <text>Unbalanced current</text>
-    <x>430</x>
+    <text>PS2</text>
+    <x>342</x>
     <y>280</y>
-    <width>170</width>
+    <width>30</width>
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button</name>
     <pv_name>pwspl:disable</pv_name>
-    <x>100</x>
+    <x>70</x>
     <y>520</y>
-    <width>510</width>
+    <width>402</width>
+    <off_label>On</off_label>
+    <off_color>
+      <color red="60" green="255" blue="60">
+      </color>
+    </off_color>
+    <on_label>Off</on_label>
+    <on_color>
+      <color red="60" green="100" blue="60">
+      </color>
+    </on_color>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_PS2</name>
-    <text>PS1</text>
+    <text>Average current</text>
     <x>100</x>
     <y>80</y>
     <width>40</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_PS2</name>
-    <text>PS2</text>
-    <x>190</x>
-    <y>80</y>
+    <text>Unbalanced current</text>
+    <x>100</x>
+    <y>140</y>
     <width>40</width>
+  </widget>
+  <widget type="spinner" version="2.0.0">
+    <name>Spinner</name>
+    <pv_name>pwspl:ps-avg</pv_name>
+    <x>70</x>
+    <y>100</y>
+    <precision>2</precision>
+    <maximum>10.0</maximum>
+  </widget>
+  <widget type="spinner" version="2.0.0">
+    <name>Spinner_1</name>
+    <pv_name>pwspl:ps-unb</pv_name>
+    <x>70</x>
+    <y>160</y>
+    <precision>2</precision>
+    <minimum>-1.0</minimum>
+    <maximum>1.0</maximum>
+    <increment>0.05</increment>
   </widget>
 </display>
