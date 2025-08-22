@@ -28,7 +28,7 @@ record(fanout,"$(project):fanout-input")
     field(LNK1,"$(project):calc-ps2")
 }
 
-record (bi, "$(project):disable")
+record (bi,"$(project):disable")
 {
     field (DESC, "Disable output")
     field(ZNAM,"Output ON")
@@ -36,7 +36,7 @@ record (bi, "$(project):disable")
     field(FLNK,"$(project):fanout-disable")
 }
 
-record(dfanout,"$(project):dfanout-disable")
+record(dfanout,"$(project):dfanout")
 {
     field(OUTA,"$(project):calc-ps1.DISA")
     field(OUTB,"$(project):calc-ps2.DISA")    
@@ -50,7 +50,6 @@ record(fanout,"$(project):fanout-disable")
     field(LNK1,"$(project):ps-avg")
     field(LNK2,"$(project):ps-unb")
 }
-
 
 record(calc,"$(project):calc-ps1")
 {
