@@ -1,0 +1,63 @@
+record(ai,"$(project):sp-ps1")
+{
+    field(DESC,"Setpoint PS1")
+    field(EGU,"A")
+    field(VAL,"0")
+    field(HIGH,"2")
+    field(HSV,"MINOR")
+    field(HIHI,"3")
+    field(HHSV,"MAJOR")
+    field(FLNK,"$(project):fanout")
+}
+
+record(ai,"$(project):sp-ps2")
+{
+    field(DESC,"Setpoint PS2")
+    field(EGU,"A")
+    field(VAL,"0")
+    field(HIGH,"2")
+    field(HSV,"MINOR")
+    field(HIHI,"3")
+    field(HHSV,"MAJOR")
+    field(FLNK,"$(project):fanout")
+}
+
+record(fanout,"$(project):fanout")
+{
+    field(LNK0,"$(project):calc-avg")
+    field(LNK1,"$(project):calc-unb")
+}
+
+record(calc,"$(project):calc-avg")
+{
+    field(DESC,"Calculate PS SP average")
+    field(INPA,"$(project):sp-ps1")
+    field(INPB,"$(project):sp-ps2")
+    field(CALC,"0.5*(A+B)")
+    field(FLNK,"$(project):ps-sp-avg")
+}
+
+record(calc,"$(project):calc-unb")
+{
+    field(DESC,"Calculate PS SP unbalance")
+    field(INPA,"$(project):sp-ps1")
+    field(INPB,"$(project):sp-ps2")
+    field(CALC,"(A-B)/(A+B)")
+    field(FLNK,"$(project):ps-sp-unb")
+}
+
+record(ao,"$(project):ps-sp-avg")
+{
+    field(DESC,"Power supply average current")
+    field(EGU,"A")
+    field(OMSL,"closed_loop")
+    field(DOL,"$(project):calc-avg")
+}
+
+record(ao,"$(project):ps-sp-unb")
+{
+    field(DESC,"Power supply unbalance")
+    # field(EGU,"")
+    field(OMSL,"closed_loop")
+    field(DOL,"$(project):calc-unb")
+}
