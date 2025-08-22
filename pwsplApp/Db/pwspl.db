@@ -28,6 +28,22 @@ record(fanout,"$(project):fanout")
     field(LNK1,"$(project):calc-ps2")
 }
 
+record (bi, "$(project):disable")
+{
+    field (DESC, "Disable output")
+    field(ZNAM,"Output OFF")
+    field(ONAM,"Output ON")
+    field(FLNK,"$(project):dfanout")
+}
+
+record(dfanout,"$(project):dfanout")
+{
+    field(OUTA,"$(project):calc-ps1.DISA")
+    field(OUTB,"$(project):calc-ps2.DISA")    
+    field(OMSL,"closed_loop")
+    field(DOL,"$(project):disable")
+}
+
 record(calc,"$(project):calc-ps1")
 {
     field(DESC,"Calculate PS1 SP")
