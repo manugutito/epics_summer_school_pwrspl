@@ -36,7 +36,7 @@ record (bi,"$(project):disable")
     field(FLNK,"$(project):fanout-disable")
 }
 
-record(dfanout,"$(project):dfanout")
+record(dfanout,"$(project):dfanout-disable")
 {
     field(OUTA,"$(project):calc-ps1.DISA")
     field(OUTB,"$(project):calc-ps2.DISA")    
