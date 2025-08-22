@@ -7,7 +7,7 @@ record(ai,"$(project):ps-avg")
     field(HSV,"MINOR")
     field(HIHI,"15")
     field(HHSV,"MAJOR")
-    field(FLNK,"$(project):fanout")
+    field(FLNK,"$(project):fanout-input")
 }
 
 record(ai,"$(project):ps-unb")
@@ -19,14 +19,38 @@ record(ai,"$(project):ps-unb")
     field(HSV,"MINOR")
     field(HIHI,"15")
     field(HHSV,"MAJOR")
-    field(FLNK,"$(project):fanout")
+    field(FLNK,"$(project):fanout-input")
 }
 
-record(fanout,"$(project):fanout")
+record(fanout,"$(project):fanout-input")
 {
     field(LNK0,"$(project):calc-ps1")
     field(LNK1,"$(project):calc-ps2")
 }
+
+record (bi, "$(project):disable")
+{
+    field (DESC, "Disable output")
+    field(ZNAM,"Output ON")
+    field(ONAM,"Output OFF")
+    field(FLNK,"$(project):fanout-disable")
+}
+
+record(dfanout,"$(project):dfanout-disable")
+{
+    field(OUTA,"$(project):calc-ps1.DISA")
+    field(OUTB,"$(project):calc-ps2.DISA")    
+    field(OMSL,"closed_loop")
+    field(DOL,"$(project):disable")
+}
+
+record(fanout,"$(project):fanout-disable")
+{
+    field(LNK0,"$(project):dfanout-disable")
+    field(LNK1,"$(project):ps-avg")
+    field(LNK2,"$(project):ps-unb")
+}
+
 
 record(calc,"$(project):calc-ps1")
 {
