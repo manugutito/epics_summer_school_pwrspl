@@ -73,6 +73,8 @@ record(ao,"$(project):ps1-sp")
 {
     field(DESC,"Setpoint of PS1")
     field(EGU,"A")
+    field(DRVL,"0")
+    field(DRVH,"10")
     field(OMSL,"closed_loop")
     field(DOL,"$(project):calc-ps1")
 }
@@ -81,6 +83,8 @@ record(ao,"$(project):ps2-sp")
 {
     field(DESC,"Setpoint of PS2")
     field(EGU,"A")
+    field(DRVL,"0")
+    field(DRVH,"10")
     field(OMSL,"closed_loop")
     field(DOL,"$(project):calc-ps2")
 }
