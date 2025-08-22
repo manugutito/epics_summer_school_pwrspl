@@ -1,63 +1,63 @@
-record(ai,"$(project):sp-ps1")
+record(ai,"$(project):ps-avg")
 {
-    field(DESC,"Setpoint PS1")
+    field(DESC,"Average")
     field(EGU,"A")
     field(VAL,"0")
-    field(HIGH,"2")
+    field(HIGH,"$(high)")
     field(HSV,"MINOR")
-    field(HIHI,"3")
+    field(HIHI,"$(hihi)")
     field(HHSV,"MAJOR")
     field(FLNK,"$(project):fanout")
 }
 
-record(ai,"$(project):sp-ps2")
+record(ai,"$(project):ps-unb")
 {
-    field(DESC,"Setpoint PS2")
+    field(DESC,"Unbalance")
     field(EGU,"A")
     field(VAL,"0")
-    field(HIGH,"2")
+    field(HIGH,"$(high)")
     field(HSV,"MINOR")
-    field(HIHI,"3")
+    field(HIHI,"$(hihi)")
     field(HHSV,"MAJOR")
     field(FLNK,"$(project):fanout")
 }
 
 record(fanout,"$(project):fanout")
 {
-    field(LNK0,"$(project):calc-avg")
-    field(LNK1,"$(project):calc-unb")
+    field(LNK0,"$(project):calc-ps1")
+    field(LNK1,"$(project):calc-ps2")
 }
 
-record(calc,"$(project):calc-avg")
+record(calc,"$(project):calc-ps1")
 {
-    field(DESC,"Calculate PS SP average")
-    field(INPA,"$(project):sp-ps1")
-    field(INPB,"$(project):sp-ps2")
-    field(CALC,"0.5*(A+B)")
-    field(FLNK,"$(project):ps-sp-avg")
+    field(DESC,"Calculate PS1 SP")
+    field(INPA,"$(project):ps-avg")
+    field(INPB,"$(project):ps-unb")
+    field(CALC,"INPA*(INPB+1)")
+    field(FLNK,"$(project):ps1-sp")
 }
 
-record(calc,"$(project):calc-unb")
+record(calc,"$(project):calc-ps2")
 {
-    field(DESC,"Calculate PS SP unbalance")
-    field(INPA,"$(project):sp-ps1")
-    field(INPB,"$(project):sp-ps2")
-    field(CALC,"(A-B)/(A+B)")
-    field(FLNK,"$(project):ps-sp-unb")
+    field(DESC,"Calculate PS2 SP")
+    field(INPA,"$(project):ps-avg")
+    field(INPB,"$(project):ps-unb")
+    field(CALC,"INPA*(1-INPB)")
+    field(FLNK,"$(project):ps2-sp")
 }
 
-record(ao,"$(project):ps-sp-avg")
+record(ao,"$(project):ps1-sp")
 {
-    field(DESC,"Power supply average current")
+    field(DESC,"Setpoint of PS1")
     field(EGU,"A")
     field(OMSL,"closed_loop")
-    field(DOL,"$(project):calc-avg")
+    field(DOL,"$(project):calc-ps1")
 }
 
-record(ao,"$(project):ps-sp-unb")
+record(ao,"$(project):ps2-sp")
 {
-    field(DESC,"Power supply unbalance")
-    # field(EGU,"")
+    field(DESC,"Setpoint of PS2")
+    field(EGU,"A")
     field(OMSL,"closed_loop")
-    field(DOL,"$(project):calc-unb")
+    field(DOL,"$(project):calc-ps2")
 }

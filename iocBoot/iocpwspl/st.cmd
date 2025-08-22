@@ -14,7 +14,7 @@ dbLoadDatabase "../../dbd/pwspl.dbd"
 pwspl_registerRecordDeviceDriver(pdbbase) 
 
 ## Load record instances
-dbLoadRecords("../../db/pwspl.db","project=pwspl")
+dbLoadRecords("../../db/pwspl.db","project=pwspl,high=10,hihi=15")
 
 iocInit()
 
